@@ -13,13 +13,13 @@ class PhoneBook {
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void	add_contact();
-		void	get_contact() const;
-		void	get_one_contact() const;
+		void		add_contact();
+		void		get_contact() const;
+		void		get_one_contact() const;
 		static void	get_byebye();
 	private:
-		Contact	contact[8];
-		int		index_full;
+		Contact		contact[8];
+		int			index_full;
 };
 
 #endif
