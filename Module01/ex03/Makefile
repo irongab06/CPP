@@ -1,8 +1,8 @@
-NAME = replace
+NAME = Weapon
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra #-g -fsanitize=address -pedantic
+CFLAGS = -std=c++98 -Wall -Wextra -g -fsanitize=address -pedantic
 
-SRC = main.cpp Replace.cpp
+SRC = HumanA.cpp HumanB.cpp main.cpp Weapon.cpp
 
 OBJ = $(SRC:.cpp=.o)
 TOTAL_FILES := $(words $(SRC))

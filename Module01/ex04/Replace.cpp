@@ -34,8 +34,7 @@ void	find_and_replace(const std::string& filename, std::ifstream& in_file,
 			std::string after = line.substr(pos + s1.size(), line.size());
 
 			new_line = new_line + before;
-			//if (pos != 0)
-				new_line = new_line + s2;
+			new_line = new_line + s2;
 			new_line = new_line + after + "\n";
 		}
 		else

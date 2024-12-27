@@ -10,6 +10,9 @@
 
 
 class PhoneBook {
+	private:
+		Contact		contact[8];
+		int			index_full;
 	public:
 		PhoneBook();
 		~PhoneBook();
@@ -17,9 +20,6 @@ class PhoneBook {
 		void		get_contact() const;
 		void		get_one_contact() const;
 		static void	get_byebye();
-	private:
-		Contact		contact[8];
-		int			index_full;
 };
 
 #endif

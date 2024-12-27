@@ -7,6 +7,14 @@
 
 class Contact {
 
+	private:
+
+	std::string	first_name;
+	std::string	last_name;
+	std::string	nickname;
+	std::string	phone_number;
+	std::string darkest_secret;
+	bool	n;
 	public:
 
 	Contact();
@@ -18,14 +26,6 @@ class Contact {
 	void	get_print_contact() const;
 	std::string	ft_point(std::string str)const;
 
-	private:
-
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string darkest_secret;
-	bool	n;
 };
 
 #endif
