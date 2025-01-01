@@ -26,15 +26,23 @@ float Fixed::to_float(void) const
 	return ((float)this->value_fixe / (1 << this->_fixedpoint));
 }
 
-const Fixed& Fixed::operator++(void)
+//-------------Increment operation and Decrement operation-------------------
+
+Fixed& Fixed::operator++(void)
 {
-	value_fixe++;
+	if ((float)this->value_fixe / (1 << _fixedpoint) < 1)
+		value_fixe++;
+	else
+		this->value_fixe += (1 << _fixedpoint);
 	return (*this);
 }
 
-const Fixed& Fixed::operator--(void)
+Fixed& Fixed::operator--(void)
 {
-	value_fixe--;
+	if ((float)this->value_fixe / (1 << _fixedpoint) < 1)
+		value_fixe--;
+	else
+		this->value_fixe -= (1 << _fixedpoint);
 	return (*this);
 }
 
@@ -42,7 +50,7 @@ const Fixed	Fixed::operator++(int)
 {
 	Fixed	temp = *this;
 	++*this;
-	return (temp);
+	return (temp);	
 }
 
 const Fixed	Fixed::operator--(int)
@@ -51,6 +59,8 @@ const Fixed	Fixed::operator--(int)
 	--*this;
 	return (temp);
 }
+
+//-----------------Addition Subtraction Division and Mutiplication---------------
 
 Fixed Fixed::operator*(Fixed const& rhs)const
 {
@@ -80,6 +90,37 @@ Fixed Fixed::operator/(Fixed const& rhs)const
 	return (temp);
 }
 
+//------------------------------comparison---------------------------------
+
+bool Fixed::operator>(Fixed const& rhs)const
+{
+	return (this->value_fixe > rhs.getRawBtis());
+}
+
+bool Fixed::operator<(Fixed const& rhs)const
+{
+	return (this->value_fixe < rhs.getRawBtis());
+}
+
+bool Fixed::operator>=(Fixed const& rhs)const
+{
+	return (this->value_fixe >= rhs.getRawBtis());
+}
+
+bool Fixed::operator<=(Fixed const& rhs)const
+{
+	return (this->value_fixe <= rhs.getRawBtis());
+}
+
+bool Fixed::operator==(Fixed const& rhs)const
+{
+	return (this->value_fixe == rhs.getRawBtis());
+}
+
+bool Fixed::operator!=(Fixed const& rhs)const
+{
+	return (this->value_fixe != rhs.getRawBtis());
+}
 
 int	Fixed::getRawBtis(void) const
 {
@@ -92,5 +133,37 @@ std::ostream&	operator<<(std::ostream& os, const Fixed& b)
 	return (os);
 }
 
+//-------------------------fonction min max--------------------------------
 
+Fixed&	Fixed::min(Fixed& a, Fixed& b)
+{
+	if (a.getRawBtis() < b.getRawBtis())
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed&	Fixed::min(const Fixed& a,const Fixed& b)
+{
+	if (a.getRawBtis() < b.getRawBtis())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed&	Fixed::max(Fixed& a, Fixed& b)
+{
+	if (a.getRawBtis() > b.getRawBtis())
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed&	Fixed::max(const Fixed& a,const Fixed& b)
+{
+	if (a.getRawBtis() > b.getRawBtis())
+		return (a);
+	else
+		return (b);
+}
 

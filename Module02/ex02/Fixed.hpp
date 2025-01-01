@@ -16,16 +16,26 @@ class	Fixed
 		Fixed(Fixed const& d);
 		~Fixed();
 
-		const Fixed&	operator++();
-		const Fixed		operator++(int);
-		const Fixed&	operator--(void);
-		const Fixed		operator--(int);
-		Fixed			operator*(Fixed const& rhs)const;
-		Fixed			operator+(Fixed const& rhs)const;
-		Fixed			operator-(Fixed const& rhs)const;
-		Fixed			operator/(Fixed const& rhs)const;
-		int				getRawBtis(void) const;
-		float			to_float(void) const;
+		Fixed&				operator++();
+		const Fixed			operator++(int);
+		Fixed&				operator--(void);
+		const Fixed			operator--(int);
+		Fixed				operator*(Fixed const& rhs)const;
+		Fixed				operator+(Fixed const& rhs)const;
+		Fixed				operator-(Fixed const& rhs)const;
+		Fixed				operator/(Fixed const& rhs)const;
+		bool				operator>(Fixed const& rhs)const;
+		bool				operator<(Fixed const& rhs)const;
+		bool				operator>=(Fixed const& rhs)const;
+		bool				operator<=(Fixed const& rhs)const;
+		bool				operator==(Fixed const& rhs)const;
+		bool				operator!=(Fixed const& rhs)const;
+		static Fixed		&min(Fixed& a, Fixed& b);
+		static const Fixed	&min(const Fixed& a,const Fixed& b);
+		static Fixed		&max(Fixed& a, Fixed& b);
+		static const Fixed	&max(const Fixed& a,const Fixed& b);
+		int					getRawBtis(void) const;
+		float				to_float(void) const;
 
 
 	private:
