@@ -21,7 +21,7 @@ class ClapTrap
 		const unsigned int&	getHp()const;
 
 	private:
-		std::string	_name;
+		std::string			_name;
 		unsigned int		_hit_points;
 		unsigned int		_energie_points;
 		unsigned int		_attack_damage;
