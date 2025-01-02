@@ -15,7 +15,7 @@ class	Fixed
 		Fixed(const float c);
 		Fixed(Fixed const& d);
 		~Fixed();
-
+		Fixed&				operator=(Fixed const& copy);
 		Fixed&				operator++();
 		const Fixed			operator++(int);
 		Fixed&				operator--(void);

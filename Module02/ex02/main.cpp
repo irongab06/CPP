@@ -72,7 +72,5 @@ std::cout<<"f = "<<f<<std::endl;
 std::cout<<"min (5, 8) = "<<Fixed::min(e, d)<<std::endl;
 std::cout<<"max (5, 8) = "<<Fixed::max(e, d)<<std::endl;
 
-
-
 return 0;
 }

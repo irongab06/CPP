@@ -21,6 +21,13 @@ Fixed::Fixed(Fixed const& d)
 Fixed::~Fixed()
 {
 }
+
+Fixed&	Fixed::operator=(Fixed const& copy)
+{
+	this->value_fixe = copy.getRawBtis();
+	return (*this);
+}
+
 float Fixed::to_float(void) const
 {
 	return ((float)this->value_fixe / (1 << this->_fixedpoint));
