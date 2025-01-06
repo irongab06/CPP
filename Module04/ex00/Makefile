@@ -2,7 +2,7 @@ NAME = Polymorphisme
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -g -fsanitize=address -pedantic
 
-SRC = main.cpp Cat.cpp Dog.cpp Animal.cpp
+SRC = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ = $(SRC:.cpp=.o)
 TOTAL_FILES := $(words $(SRC))

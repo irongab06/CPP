@@ -1,5 +1,5 @@
 #ifndef SCRAVTRAP_HPP
-# define SCRAPTRAP_HPP
+# define SCRAVTRAP_HPP
 
 #include <iostream>
 #include <string>

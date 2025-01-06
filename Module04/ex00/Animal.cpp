@@ -2,10 +2,12 @@
 
 Animal::Animal()
 {
+	std::cout << "constructor default Animal"<< std::endl;
 }
 
 Animal::Animal(std::string type) : _type(type)
 {
+	std::cout << "constructor animal type : "<< type << std::endl;
 }
 
 Animal::Animal(Animal const& copy)
@@ -15,6 +17,7 @@ Animal::Animal(Animal const& copy)
 
 Animal::~Animal()
 {
+	std::cout << "destructor Animal"<< std::endl;
 }
 
 Animal& Animal::operator=(Animal const& copy)

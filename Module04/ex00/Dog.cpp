@@ -2,6 +2,7 @@
 
 Dog::Dog() : Animal("Dog")
 {
+	std::cout << "cosntructor default Dog"<< std::endl;
 }
 
 Dog:: Dog(Dog const& copy)
@@ -11,11 +12,12 @@ Dog:: Dog(Dog const& copy)
 
 void	Dog::makeSound()const
 {
-	std::cout << "Wouaff Wouaff"<<std::endl;
+	std::cout << this->getType() <<" : Wouaff Wouaff"<<std::endl;
 }
 
 Dog::~Dog()
 {
+	std::cout << "Destructor Dog" << std::endl;
 }
 
 Dog& Dog::operator=(Dog const& copy)

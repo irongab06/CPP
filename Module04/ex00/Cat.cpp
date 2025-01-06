@@ -4,10 +4,12 @@
 
 Cat::Cat() : Animal("Cat")
 {
+	std::cout << "constructor default Cat"<< std::endl;
 }
 
 Cat::~Cat()
 {
+	std::cout << "Destructor Cat"<< std::endl;
 }
 
 Cat::Cat(Cat const& copy)
@@ -17,7 +19,7 @@ Cat::Cat(Cat const& copy)
 
 void	Cat::makeSound(void)const
 {
-	std::cout << "Miaou Miaou" <<std::endl;
+	std::cout << this->getType() <<" : Miaou Miaou" <<std::endl;
 }
 
 Cat&	Cat::operator=(Cat const& copy)
