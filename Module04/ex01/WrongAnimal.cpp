@@ -2,17 +2,17 @@
 
 WrongAnimal::WrongAnimal()
 {
-	std::cout << "WrongAnimal : Default Constructor"<< std::endl;
+	std::cout << "WrongAnimal : 🏗️"<< std::endl;
 }
 
 WrongAnimal::WrongAnimal(std::string const type) : _type(type)
 {
-	std::cout << "WrongAnimal: Constructor Type"<< std::endl;
+	std::cout << "WrongAnimal : 🏗️ Type"<< std::endl;
 }
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << "WrongAnimal: Destructor"<< std::endl;
+	std::cout << "WrongAnimal : 🧨"<< std::endl;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const& copy)

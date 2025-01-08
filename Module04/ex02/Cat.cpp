@@ -4,16 +4,20 @@
 
 Cat::Cat() : Animal("Cat")
 {
-	std::cout << "Cat : Constructor default"<< std::endl;
+	std::cout << "Cat : 🏗️"<< std::endl;
+	this->_Brain = new Brain();
 }
 
 Cat::~Cat()
 {
-	std::cout << "Cat : Destructor"<< std::endl;
+	std::cout << "Cat : 🧨"<< std::endl;
+	delete this->_Brain;
 }
 
 Cat::Cat(Cat const& copy) : Animal(copy)
 {
+	std::cout << "Cat : Copy 🏗️" << std::endl;
+	_Brain = new Brain(*copy._Brain);
 }
 
 void	Cat::makeSound(void)const
@@ -24,5 +28,6 @@ void	Cat::makeSound(void)const
 Cat&	Cat::operator=(Cat const& copy)
 {
 	_type = copy.getType();
+	_Brain = new Brain(*copy._Brain);
 	return (*this);
 }

@@ -2,12 +2,12 @@
 
 WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-	std::cout << "WrongCat : Constructor Default"<< std::endl; 
+	std::cout << "WrongCat : 🏗️"<< std::endl; 
 }
 
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat : Destructor"<< std::endl;
+	std::cout << "WrongCat : 🧨"<< std::endl;
 }
 
 WrongCat::WrongCat(WrongCat const& copy) : WrongAnimal(copy)
