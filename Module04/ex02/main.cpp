@@ -6,6 +6,7 @@
 
 int main()
 {
+	//Animal	animal = Animal();
 	std::cout<< "\n---------------------Constructor------------------\n"<<std::endl;
 	
 	int	i = 0;
