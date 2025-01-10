@@ -12,6 +12,8 @@ class MateriaSource : public IMateriaSource
 		~MateriaSource();
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
+	private:
+		AMateria* Source[4];
 };
 
 #endif
