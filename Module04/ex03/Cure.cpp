@@ -23,3 +23,9 @@ AMateria* Cure::clone() const
 	Cure*	copy = new Cure();
 	return (copy);
 }
+
+void Cure::use(ICharacter& target)
+{
+	std::cout << "* shoots an "<< this->getType() << " bolt at " 
+			<< target.getName() << " *"<< std::endl;
+}

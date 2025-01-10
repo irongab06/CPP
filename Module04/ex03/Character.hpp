@@ -1,14 +1,17 @@
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
+#include <iostream>
+#include <string>
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
 
 class Character : public ICharacter
 {
 	public:
+		Character();
 		Character(std::string name);
-		~Character() {}
+		~Character();
 		Character(Character const& copy);
 		Character&	operator=(Character const& copy);
 		std::string const & getName() const;

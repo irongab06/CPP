@@ -6,7 +6,10 @@
 class ICharacter
 {
 	public:
-		virtual ~ICharacter() {}
+		virtual	ICharacter() = 0;
+		virtual ~ICharacter();
+		virtual ICharacter(ICharacter const& copy) = 0;
+		virtual	ICharacter&	operator=(ICharacter const& copy) = 0;
 		virtual std::string const & getName() const = 0;
 		virtual void equip(AMateria* m) = 0;
 		virtual void unequip(int idx) = 0;
