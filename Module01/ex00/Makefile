@@ -2,7 +2,7 @@ NAME = Zombie
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -g -fsanitize=address -pedantic
 
-SRC = main.cpp newzombie.cpp randomChump.cpp Zombie.cpp
+SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 
 OBJ = $(SRC:.cpp=.o)
 TOTAL_FILES := $(words $(SRC))
