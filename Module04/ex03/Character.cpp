@@ -19,7 +19,10 @@ Character::Character(std::string name) : _name(name)
 Character::~Character()
 {
 	for (int i = 0; i < 4; i++)
-		delete this->_item[i];
+	{
+		if (this->_item[i])
+			delete this->_item[i];
+	}
 }
 
 Character::Character(Character const& copy) : ICharacter(copy)
@@ -52,20 +55,32 @@ void Character::equip(AMateria* m)
 	{
 		if (!_item[i])
 		{
+			std::cout << "Add materia " << m->getType()<< "\n"<< std::endl;
 			this->_item[i] = m;
 			return ;
 		}
 	}
+	std::cout << "inventory is full 4/4 " << "Materia "<< m->getType() 
+			<< " not equiped\n" <<std::endl;
+	delete m;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx <= 3 && _item[idx])
+	{
+		std::cout << "\nunequip " << this->_item[idx]->getType() << std::endl;
 		this->_item[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
 	if (idx >= 0 && idx <= 3 && _item[idx] &&!target.getName().empty())
 		this->_item[idx]->use(target);
+}
+
+AMateria* Character::getMateria(int idx)const
+{
+	return (_item[idx]);
 }
