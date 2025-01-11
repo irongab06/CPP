@@ -1,6 +1,6 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria()
+AMateria::AMateria() : _type("")
 {
 }
 
@@ -26,4 +26,11 @@ AMateria&	AMateria::operator=(AMateria const& copy)
 std::string const& AMateria::getType() const
 {
 	return (this->_type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "* I can't do anything" 
+		<< " I can't do anything materia " 
+		<< target.getName() << " *"<< std::endl;
 }
