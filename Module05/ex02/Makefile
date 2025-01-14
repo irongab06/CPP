@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Bureaucrat
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -g -fsanitize=address -pedantic
 
