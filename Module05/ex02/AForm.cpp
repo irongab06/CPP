@@ -66,6 +66,22 @@ void	AForm::beSigned(const Bureaucrat &Bureaucrat)
 		this->_signed = true;
 }
 
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (this->getSigned() != true)
+	{
+		throw	NotSignedException();
+	}
+	if (this->getGradeSign() < executor.getGrade())
+	{
+		throw	GradeTooLowException();
+	}
+	if (this->getGradeExecute() < executor.getGrade())
+	{
+		throw	GradeTooLowExceptionexec();
+	}
+}
+
 std::ostream& operator<<(std::ostream& os, AForm const& f)
 {
 	os << "Name formulaire "<< REDCOLOR << f.getName() 

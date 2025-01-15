@@ -81,17 +81,16 @@ void	Bureaucrat::executeForm(AForm const &form)
 	{
 		form.execute(*this);
 		std::cout << REDCOLOR <<this->getName()<< RESETCOLOR
-		<< GREENCOLOR << " executed "<< RESETCOLOR << " < " << form.getName()
+		<< GREENCOLOR << " Succes executed "<< RESETCOLOR << " < " << form.getName()
 			<< " > " << std::endl;
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cerr << REDCOLOR <<this->getName()<< RESETCOLOR
 			<< " couldn’t execute " << " < " << form.getName() << " > "
 			<< " Because " << GREENCOLOR << e.what() << RESETCOLOR
 			<< "\n" << std::endl;
 	}
-	
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& f)

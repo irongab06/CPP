@@ -9,6 +9,7 @@
 #include <string>
 #include <stdexcept>
 #include <ostream>
+#include <cstdlib>
 
 class Bureaucrat;
 
@@ -40,7 +41,15 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Grade too low!");
+					return ("Grade too low for signed!");
+				}
+		};
+		class GradeTooLowExceptionexec : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Grade too low for execution!");
 				}
 		};
 		class AlreadySignedException : public std::exception
@@ -55,9 +64,17 @@ class AForm
 		class NotSignedException : public std::exception
 		{
 			public:
-				virtual const char* what () throw()
+				virtual const char* what() const throw()
 				{
 					return ("Not signed!");
+				}
+		};
+		class OpenErrorFile : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Error open File");
 				}
 		};
 	private:

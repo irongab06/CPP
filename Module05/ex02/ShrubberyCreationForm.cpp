@@ -4,8 +4,8 @@ ShrubberyCreationForm::ShrubberyCreationForm() : _target("Default")
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const& _target) :
-	AForm(_target , 147, 135)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const& target) :
+	AForm(target , 147, 135), _target(target)
 {
 	std::cout << "Constructor ShrubberyCreationForm" << std::endl;
 }
@@ -33,29 +33,25 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (this->getSigned() != true)
-		throw	NotSignedException();
-	if (this->getGradeExecute() < executor.getGrade())
-		throw	GradeTooLowException();
+	AForm::execute(executor);
 	std::string	form_name = (executor.getName() + "_shrubbery");
-	std::ofstream	temp(form_name.c_str());
+	std::ofstream 	temp(form_name.c_str());
 	if (!temp.is_open())
 	{
 		temp.close();
 		throw OpenErrorFile();
 	}
-	else
-	{
-		temp<< "      /\\      \n"
-            << "     /\\*\\     \n"
-            << "    /\\O\\*\\    \n"
-            << "   /*/\\/\\/\\   \n"
-            << "  /\\O\\/\\*\\/\\  \n"
-            << " /\\*\\/\\*\\/\\/\\ \n"
-            << "/\\O\\/\\/*/\\/O/\\\n"
-            << "      ||      \n"
-            << "      ||      \n"
-            << "      ||      \n"<< std::endl;
-		temp.close();
-	}
+	std::cout << REDCOLOR <<executor.getName() 
+		<< RESETCOLOR << " draw sapin in File \n" << std::endl;
+	temp<< "      /\\      \n"
+		<< "     /\\*\\     \n"
+		<< "    /\\O\\*\\    \n"
+		<< "   /*/\\/\\/\\   \n"
+		<< "  /\\O\\/\\*\\/\\  \n"
+		<< " /\\*\\/\\*\\/\\/\\ \n"
+		<< "/\\O\\/\\/*/\\/O/\\\n"
+		<< "      ||      \n"
+		<< "      ||      \n"
+		<< "      ||      \n"<< std::endl;
+	temp.close();
 }

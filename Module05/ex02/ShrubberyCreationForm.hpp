@@ -2,6 +2,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -15,14 +16,6 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(ShrubberyCreationForm const& copy);
 		ShrubberyCreationForm& operator=(ShrubberyCreationForm const& copy);
 		void execute(Bureaucrat const &executor) const;
-		class OpenErrorFile : public std::exception
-		{
-			public:
-				virtual const char* what() throw()
-				{
-					return ("Error open File");
-				}
-		};
 	private:
 		std::string	_target;
 };

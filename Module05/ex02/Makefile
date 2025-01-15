@@ -2,7 +2,8 @@ NAME = AForm
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -g -fsanitize=address -pedantic
 
-SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp\
+PresidentialPardonForm.cpp RobotomyRequestForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 TOTAL_FILES := $(words $(SRC))
