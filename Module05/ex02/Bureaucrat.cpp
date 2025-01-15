@@ -87,7 +87,7 @@ void	Bureaucrat::executeForm(AForm const &form)
 	catch(const std::exception& e)
 	{
 		std::cerr << REDCOLOR <<this->getName()<< RESETCOLOR
-			<< " couldn’t sign " << " < " << form.getName() << " > "
+			<< " couldn’t execute " << " < " << form.getName() << " > "
 			<< " Because " << GREENCOLOR << e.what() << RESETCOLOR
 			<< "\n" << std::endl;
 	}

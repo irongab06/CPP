@@ -76,5 +76,3 @@ std::ostream& operator<<(std::ostream& os, AForm const& f)
 		<< RESETCOLOR << std::endl;
 	return (os);
 }
-
-

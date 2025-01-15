@@ -4,8 +4,8 @@ ShrubberyCreationForm::ShrubberyCreationForm() : _target("Default")
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string& _target) :
-	AForm("ShrubberyCreationForm", 147, 135)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const& _target) :
+	AForm(_target , 147, 135)
 {
 	std::cout << "Constructor ShrubberyCreationForm" << std::endl;
 }
@@ -31,14 +31,14 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return (*this);
 }
 
-ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (this->getSigned() != true)
 		throw	NotSignedException();
-	if (this->_gradetoexecute > executor.getGrade())
+	if (this->getGradeExecute() < executor.getGrade())
 		throw	GradeTooLowException();
-	std::string	form_name = this->_target + "_shrubbery";
-	std::ostream	temp(form_name.c_str());
+	std::string	form_name = (executor.getName() + "_shrubbery");
+	std::ofstream	temp(form_name.c_str());
 	if (!temp.is_open())
 	{
 		temp.close();
