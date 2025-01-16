@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gacavali <gacavali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/16 11:35:33 by gacavali          #+#    #+#             */
+/*   Updated: 2025/01/16 11:35:33 by gacavali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCRAVTRAP_HPP
-# define SCRAPTRAP_HPP
+# define SCRAVTRAP_HPP
 
 #include <iostream>
 #include <string>
