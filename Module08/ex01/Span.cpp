@@ -17,3 +17,11 @@ void	Span::addNumber(const size_t integer) {
 	else
 		throw	SpanFull();
 }
+
+void	Span::shortestSpan()
+{
+	std::vector<unsigned int>::iterator it = _span.begin();
+	std::vector<unsigned int>::iterator ite = _span.end();
+	std::sort(it, ite);
+	
+}
