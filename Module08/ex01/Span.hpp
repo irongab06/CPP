@@ -8,18 +8,23 @@
 #include <stdexcept>
 #include <cstddef>
 #include <algorithm>
+#include <climits>
+
+typedef std::vector<unsigned int>::iterator type_it;
 
 class Span
 {
 	public:
 		Span();
 		Span(unsigned int N);
-		Span(Span const& copy);
-		Span&	operator=(Span const& copy);
+		//Span(Span const& copy);
+		//Span&	operator=(Span const& copy);
 		~Span();
 		void	addNumber(const size_t integer);
-		void	shortestSpan();
-		void	longestSpan();
+		void	addNumber(type_it begin,
+			type_it end);
+		unsigned int	shortestSpan();
+		unsigned int	longestSpan();
 	class SpanFull : public std::exception
 	{
 		public:
@@ -28,7 +33,15 @@ class Span
 				return ("Span is full");
 			}
 	};
+	class ErrorSpan : public std::exception
+	{
+		public:
+			virtual char const* what() const throw()
+			{
+				return ("Cannot calculate a distance");
+			}
 
+	};
 	private:
 		std::vector<unsigned int>	_span;
 		size_t						_N;
