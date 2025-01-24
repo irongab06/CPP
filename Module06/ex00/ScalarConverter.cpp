@@ -6,7 +6,7 @@
 /*   By: gacavali <gacavali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:58:19 by gacavali          #+#    #+#             */
-/*   Updated: 2025/01/19 21:58:20 by gacavali         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:23:33 by gacavali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ static void	ConvertFloat(std::string const &value)
 		std::cout << "char: '"<< static_cast<char>(value_float) << "'"<< std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
-	if (value_float <= INT_MAX && value_float >= INT_MIN)
+	if (value_float <= FLT_MAX && value_float >= FLT_MIN)
 		std::cout << "int: " << static_cast<int>(value_float) << std::endl;
 	else
 		std::cout << "int: Impossible" << std::endl;

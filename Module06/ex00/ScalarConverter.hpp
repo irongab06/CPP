@@ -6,7 +6,7 @@
 /*   By: gacavali <gacavali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:58:14 by gacavali          #+#    #+#             */
-/*   Updated: 2025/01/19 21:58:15 by gacavali         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:30:21 by gacavali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cctype>
+#include <limits.h>
 #include <climits>
 #include <cfloat>
 #include <cerrno>
@@ -29,8 +30,8 @@ class ScalarConverter
 {
 	public:
 		static void	convert(std::string const &litteral);
-		~ScalarConverter();
 	private:
+		~ScalarConverter();
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const& copy);
 		ScalarConverter&	operator=(ScalarConverter const& copy);

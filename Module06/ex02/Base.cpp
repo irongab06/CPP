@@ -6,7 +6,7 @@
 /*   By: gacavali <gacavali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:23:04 by gacavali          #+#    #+#             */
-/*   Updated: 2025/01/20 13:23:05 by gacavali         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:21:22 by gacavali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,20 @@ void identify(Base* p)
 void identify(Base& p)
 {
 	try {
-		dynamic_cast<A&>(p);
+		Base &d = dynamic_cast<A&>(p);
+		(void)d;
 		std::cout << "Type Ref A" << std::endl;
 	}
 	catch(const std::exception&) {
 		try {
-			dynamic_cast<B&>(p);
+			Base &d = dynamic_cast<B&>(p);
+			(void)d;
 			std::cout << "Type Ref B" << std::endl;
 		}
 		catch(const std::exception&) {
 			try {
-				dynamic_cast<C&>(p);
+				Base &d = dynamic_cast<C&>(p);
+				(void)d;
 				std::cout << "Type Ref C" << std::endl;
 			}
 			catch(const std::exception&) {

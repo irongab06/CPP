@@ -1,6 +1,6 @@
 NAME = converter
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -g -fsanitize=address -pedantic
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -g -fsanitize=address -pedantic
 
 SRC = main.cpp ScalarConverter.cpp
 

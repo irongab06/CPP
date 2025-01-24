@@ -40,7 +40,6 @@ class Span
 			{
 				return ("Cannot calculate a distance");
 			}
-
 	};
 	private:
 		std::vector<unsigned int>	_span;
