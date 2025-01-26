@@ -3,7 +3,18 @@
 Span::Span() : _span(0), _N(0) {}
 
 Span::Span(unsigned int N) : _N(N) {
-	std::cout << "Constructor Span" << std::endl;
+}
+
+Span::Span(Span const& copy) : _span(copy._span), _N(copy._N) {}
+
+Span&	Span::operator=(Span const& copy)
+{
+	if (this != &copy)
+	{
+		this->_N = copy._N;
+		this->_span = copy._span;
+	}
+	return (*this);
 }
 
 Span::~Span(){

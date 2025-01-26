@@ -1,6 +1,9 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+#define REDCOLOR "\033[31m"
+#define RESETCOLOR "\033[0m"
+
 #include <vector>
 #include <iterator>
 #include <iostream>
@@ -17,8 +20,8 @@ class Span
 	public:
 		Span();
 		Span(unsigned int N);
-		//Span(Span const& copy);
-		//Span&	operator=(Span const& copy);
+		Span(Span const& copy);
+		Span&	operator=(Span const& copy);
 		~Span();
 		void	addNumber(const size_t integer);
 		void	addNumber(type_it begin,
