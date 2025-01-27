@@ -6,7 +6,7 @@
 /*   By: gacavali <gacavali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:51:43 by gacavali          #+#    #+#             */
-/*   Updated: 2025/01/16 12:21:46 by gacavali         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:14:28 by gacavali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int main()
 
 	tmp2 = marine->getMateria(0);
 	marine->unequip(0);
-	delete tmp2;
+	//delete tmp2;
 
 	tmp2 = marine->getMateria(1);
 	marine->unequip(1);
