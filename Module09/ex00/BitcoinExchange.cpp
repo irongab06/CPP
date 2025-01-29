@@ -48,19 +48,19 @@ static bool	CheckDate(std::string& line)
 	for (int i = 0; i <= 12; i++) {
 		if (i < 4 || (i > 4 && i < 7) || (i > 7 && i < 10)) {
 			if (!std::isdigit(line[i])) {
-				std::cout << "Error: bad input => " << line.substr(0, 11) << std::endl;
+				std::cerr << "Error: bad input => " << line.substr(0, 11) << std::endl;
 				return (false);
 			}
 		}
 		if ((i == 4 && line[i] != '-') || (i == 7 && line[i] != '-')
 			|| (i == 10 && line[i] != ' ') || (i == 12 && line[i] != ' ')
 			|| (i == 11 && line[i] != '|')) {
-			std::cout << "Error: bad input => " << line.substr(0, 11) << std::endl;
+			std::cerr << "Error: bad input => " << line.substr(0, 11) << std::endl;
 			return (false);
 		}
 	}
 	if (!CheckValidDate(line)) {
-		std::cout << "Error: bad input => " << line.substr(0, 11) << std::endl;
+		std::cerr << "Error: bad input => " << line.substr(0, 11) << std::endl;
 		return (false);
 	}
 	return (true);
@@ -73,15 +73,15 @@ static bool	CheckValue(std::string& line)
 	double value = std::strtod(temp_line.c_str(), &end);
 	errno = 0;
 	if (*end != '\0' || errno == ERANGE) {
-		std::cout << "Error : Format value" << std::endl;
+		std::cerr << "Error : Format value" << std::endl;
 		return (false);
 	}
 	if (value > 1000) {
-		std::cout << "Error: too large a number." << std::endl;
+		std::cerr << "Error: too large a number." << std::endl;
 		return (false);
 	}
 	if (value < 0) {
-		std::cout << "Error: not a positive number." << std::endl;
+		std::cerr << "Error: not a positive number." << std::endl;
 		return (false);
 	}
 	return (true);
@@ -120,7 +120,7 @@ void	BitcoinExchange::CheckFile(std::string& Filename)
 	std::string	line;
 	std::getline(fd_input, line);
 	if (line != "date | value") {
-		std::cout << "Error : No Header Infile" << std::endl;
+		std::cerr << "Error : No Header Infile" << std::endl;
 		return ;
 	}
 	while (std::getline(fd_input, line))
@@ -150,17 +150,5 @@ void	BitcoinExchange::LoadData(std::string const& data) {
 		std::string	date = line.substr(0, 10);
 		double		value = std::atof(line.substr(11).c_str());
 		_data[date] = value;
-	}
-}
-
-void	BitcoinExchange::GetData()
-{
-	std::map<std::string, double>::iterator	it = _data.begin();
-	std::map<std::string, double>::iterator	ite = _data.end();
-	for(; it != ite; ++it)
-	{
-		if (it->second != 0)
-			std::cout << std::fixed << std::setprecision(2); 
-		std::cout << it->first << " " << it->second << std::endl;
 	}
 }

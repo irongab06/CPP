@@ -6,7 +6,7 @@
 /*   By: gacavali <gacavali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:55:36 by gacavali          #+#    #+#             */
-/*   Updated: 2025/01/29 22:55:27 by gacavali         ###   ########.fr       */
+/*   Updated: 2025/01/29 23:15:38 by gacavali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class BitcoinExchange
 		BitcoinExchange&	operator=(BitcoinExchange const& copy);
 		~BitcoinExchange();
 		void	LoadData(std::string const& data);
-		void	GetData();
 		void	CheckFile(std::string& Filename);
 		bool	CompareData(std::string& line);
 		class ErrorOpen : public std::exception
