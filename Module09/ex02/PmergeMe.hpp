@@ -1,5 +1,5 @@
 #ifndef PMERGEME_HPP
-# define PMERGE_HPP
+# define PMERGEME_HPP
 
 #include <string>
 #include <iostream>
@@ -19,8 +19,9 @@ class PmergeMe
 		PmergeMe();
 		PmergeMe(std::string &list);
 		~PmergeMe();
-		// PmergeMe(PmergeMe const& copy);
-	//	PmergeMe&	operator=(PmergeMe const& copy);
+		template <typename T>
+		PmergeMe(PmergeMe const& copy);
+		PmergeMe&	operator=(PmergeMe const& copy);
 		void	StartAlgo(std::string &list);
 
 	private:

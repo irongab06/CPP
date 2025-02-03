@@ -9,6 +9,13 @@ PmergeMe::PmergeMe(std::string &list)
 
 PmergeMe::~PmergeMe() {}
 
+PmergeMe&	PmergeMe::operator=(PmergeMe const &copy) {
+	this->v_sort = copy.v_sort;
+	this->d_sort = copy.d_sort;
+	return  (*this);
+}
+
+
 template <typename T, typename U>
 static	void	SortByPair(T &sort, U &pair)
 {
@@ -35,26 +42,76 @@ static	void	SortByPair(T &sort, U &pair)
 	}
 	sort.clear();
 }
+	// template <typename T, typename U>
+	// static void	JacobInsert(T &sort, U &pair)
+	// {
+		
+	// }
+
 template <typename T, typename U>
-static void	JacobInsert(T &sort, U &pair)
+void	MergeRecursive(T &sort, U &merge)
 {
+	U	temp;
+	T	left;
+	T	right;
+	size_t midl = merge.size() / 2;
+	int	tab = 0;
+
+	(void)sort;
+	temp = merge;
+	merge.clear();
+	while (!temp.empty())
+	{
+		midl = temp[tab].size(); 
+		for (size_t i = 0; i < midl; i++) {
+			left.push_back(temp[tab][i]);
+		}
+		for (size_t i = midl; i < temp[tab].size(); i++) {
+			right.push_back(temp[tab][i]);
+		}
+		merge.push_back(left);
+		merge.push_back(right);
+		left.clear();
+		right.clear();
+		temp.erase(temp.begin());
+	}	
 	
+	midl = merge.size() / 2;
+	temp = merge;
+	merge.clear();
+	
+
+	while (!temp.empty())
+	{
+		midl = temp[tab].size(); 
+		for (size_t i = 0; i < midl; i++) {
+			left.push_back(temp[tab][i]);
+		}
+		for (size_t i = midl; i < temp[tab].size(); i++) {
+			right.push_back(temp[tab][i]);
+		}
+		merge.push_back(left);
+		merge.push_back(right);
+		left.clear();
+		right.clear();
+		temp.erase(temp.begin());
+	}
 }
+
 template <typename T, typename U>
 void	Merge(T &sort, U &pair)
 {
-	std::cout << std::endl;
 	(void)pair;
 	U	merge;
 	U	db;
 	T	single;
 	T	right;
 	T	left;
-	// std::vector<int>::iterator it = sort.begin();
-	// for (int i = 0; it != sort.end(); it++, i++) {
-	// 		std::cout << *it << " ";
-	// }
-	// std::cout << std::endl;
+	std::vector<int>::iterator it = sort.begin();
+	for (; it != sort.end(); it++) {
+			std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 	size_t midl = sort.size() / 2;
 	if (sort.size() >= 2) {
 		for (size_t i = 0; i < midl; i++)
@@ -67,35 +124,44 @@ void	Merge(T &sort, U &pair)
 		left.clear();
 	}
 	sort.clear();
+	if (merge.size() == 2) {
+		if (merge[0] > merge[1]) {
+			sort.push_back(merge[1][0]);
+			sort.push_back(merge[0][0]);
+			return ;
+		}
+	}
+	MergeRecursive(sort, merge);
 
-
-	// size_t e = 0;
-	// for (size_t i = 0; i < merge.size(); i++)
-	// {
-	// 	while (e < merge[i].size())
-	// 	{
-	// 		std::cout << merge[i][e];
-	// 		std::cout << " ";
-	// 		e++;
-	// 	}
-	// 	std::cout << std::endl;
-	// 	e = 0;
-	// }
+	std::cout << "###########################################################" << std::endl;
+	size_t e = 0;
+	for (size_t i = 0; i < merge.size(); i++)
+	{
+		while (e < merge[i].size())
+		{
+			std::cout << merge[i][e];
+			std::cout << " ";
+			e++;
+		}
+	std::cout << std::endl;
+		e = 0;
+	}
+	std::cout << "test-----------------	------" <<std::endl;
 	// std::cout<< std::endl;
 
 
-	size_t j = 0;
-	for (size_t i = 0; i < db.size(); i++)
-	{
-		while (j < db[i].size())
-		{
-			std::cout << " " <<db[i][j];
-			std::cout << " ";
-			j++;
-		}
-		std::cout << std::endl;
-		j = 0;
-	}
+	// size_t j = 0;
+	// for (size_t i = 0; i < db.size(); i++)
+	// {
+	// 	while (j < db[i].size())
+	// 	{
+	// 		std::cout << " " <<db[i][j];
+	// 		std::cout << " ";
+	// 		j++;
+	// 	}
+	// 	std::cout << std::endl;
+	// 	j = 0;
+	// }
 
 	// std::vector<int>::iterator ite = single.begin();
 	// for (int i = 0; ite != single.end(); ite++, i++) {
@@ -178,7 +244,7 @@ void	PmergeMe::StartAlgo(std::string &list)
 	// 		std::cout << " ";
 	// 		j++;
 	// 	}
-	// 	std::cout << std::endl;
+	// 	std::cout << "\n" << std::endl;
 	// 	j = 0;
 	// }
 	
@@ -186,5 +252,5 @@ void	PmergeMe::StartAlgo(std::string &list)
 	// for (int i = 0; it != v_sort.end(); it++, i++) {
 	// 	std::cout << *it << " ";
 	// }
-	std::cout << std::endl;
+	// std::cout << std::endl;
 }
