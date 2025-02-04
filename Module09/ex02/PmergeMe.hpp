@@ -21,7 +21,6 @@ class PmergeMe
 		PmergeMe();
 		PmergeMe(std::string &list);
 		~PmergeMe();
-		template <typename T>
 		PmergeMe(PmergeMe const& copy);
 		PmergeMe&	operator=(PmergeMe const& copy);
 		void	StartAlgo(std::string &list);

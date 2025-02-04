@@ -9,9 +9,13 @@ PmergeMe::PmergeMe(std::string &list)
 
 PmergeMe::~PmergeMe() {}
 
+PmergeMe::PmergeMe(PmergeMe const& copy) : v_sort(copy.v_sort), d_sort(copy.d_sort) {}
+
 PmergeMe&	PmergeMe::operator=(PmergeMe const &copy) {
-	this->v_sort = copy.v_sort;
-	this->d_sort = copy.d_sort;
+	if (this != &copy) {
+		this->v_sort = copy.v_sort;	
+		this->d_sort = copy.d_sort;
+	}
 	return  (*this);
 }
 
