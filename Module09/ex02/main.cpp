@@ -17,5 +17,7 @@ int	main(int argc, char **argv)
 			std::cerr << "\033[31m" << e.what() << "\033[0m" <<  std::endl;
 		}
 	}
+	else
+		std::cerr <<"\033[31mEntry Numbers Please\033[0m" << std::endl;
 	return (0);
 }

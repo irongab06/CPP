@@ -15,6 +15,17 @@ PmergeMe&	PmergeMe::operator=(PmergeMe const &copy) {
 	return  (*this);
 }
 
+void	PrintSort(std::string &list, std::vector<int> &v_sort)
+{
+	
+	std::cout << "Before : " << list << std::endl;
+	std::cout << std::endl;	
+	std::cout << "After : ";
+	for (size_t i = 0; i < v_sort.size(); i++) {
+			std::cout << v_sort[i] << " ";
+	}
+	std::cout << std::endl;
+}
 
 template <typename T, typename U>
 static	void	SortByPair(T &sort, U &pair)
@@ -42,76 +53,62 @@ static	void	SortByPair(T &sort, U &pair)
 	}
 	sort.clear();
 }
-	// template <typename T, typename U>
-	// static void	JacobInsert(T &sort, U &pair)
-	// {
-		
-	// }
+static size_t	JacobInsert(size_t &index_1, size_t &index_2)
+{
+	size_t indice = 0;
+
+	if (index_1 == 0) {
+		index_1 = 1;
+		return (0);
+	}
+	if (index_1 == 1 && index_2 == 0) {
+		index_2 = 1;
+		return (1);
+	}
+	indice = index_1 + (2 * index_2);
+	index_2 = index_1;
+	index_1 = indice;
+	return (indice);
+}
 
 template <typename T, typename U>
 void	MergeRecursive(T &sort, U &merge)
 {
-	U	temp;
-	T	left;
-	T	right;
-	size_t midl = merge.size() / 2;
-	int	tab = 0;
+	U	temp = merge;
+	bool	pair = true;
 
-	(void)sort;
-	temp = merge;
 	merge.clear();
-	while (!temp.empty())
-	{
-		midl = temp[tab].size(); 
-		for (size_t i = 0; i < midl; i++) {
-			left.push_back(temp[tab][i]);
+	for (size_t tab = 0; tab < temp.size(); tab++) {
+		T	left, right;
+		size_t midl = temp[tab].size() / 2;
+		if (temp[tab].size() > 2) {
+			for (size_t i = 0; i < midl; i++) { 
+				left.push_back(temp[tab][i]); }
+			for (size_t i = midl; i < temp[tab].size(); i++) { 
+				right.push_back(temp[tab][i]); };
 		}
-		for (size_t i = midl; i < temp[tab].size(); i++) {
-			right.push_back(temp[tab][i]);
+		else {
+			for (size_t i = 0; i < temp[tab].size(); i++) {
+				left.push_back(temp[tab][i]);}
 		}
-		merge.push_back(left);
-		merge.push_back(right);
-		left.clear();
-		right.clear();
-		temp.erase(temp.begin());
-	}	
-	
-	midl = merge.size() / 2;
-	temp = merge;
-	merge.clear();
-	
-
-	while (!temp.empty())
-	{
-		midl = temp[tab].size(); 
-		for (size_t i = 0; i < midl; i++) {
-			left.push_back(temp[tab][i]);
-		}
-		for (size_t i = midl; i < temp[tab].size(); i++) {
-			right.push_back(temp[tab][i]);
-		}
-		merge.push_back(left);
-		merge.push_back(right);
-		left.clear();
-		right.clear();
-		temp.erase(temp.begin());
+		if (!left.empty())
+			merge.push_back(left);
+		if (!right.empty())
+			merge.push_back(right);
+		if (left.size() > 2 || right.size() > 2)
+			pair = false;
 	}
+	if (!pair)
+		MergeRecursive(sort, merge);
 }
 
 template <typename T, typename U>
-void	Merge(T &sort, U &pair)
+void	MergeInsert(T &sort, U &pair)
 {
 	(void)pair;
-	U	merge;
-	U	db;
-	T	single;
-	T	right;
-	T	left;
-	std::vector<int>::iterator it = sort.begin();
-	for (; it != sort.end(); it++) {
-			std::cout << *it << " ";
-	}
-	std::cout << std::endl;
+	U	merge, db;
+	T	single, right, left;
+
 	size_t midl = sort.size() / 2;
 	if (sort.size() >= 2) {
 		for (size_t i = 0; i < midl; i++)
@@ -123,50 +120,19 @@ void	Merge(T &sort, U &pair)
 		right.clear();
 		left.clear();
 	}
-	sort.clear();
-	if (merge.size() == 2) {
-		if (merge[0] > merge[1]) {
-			sort.push_back(merge[1][0]);
-			sort.push_back(merge[0][0]);
-			return ;
-		}
-	}
+	else
+		return ;
 	MergeRecursive(sort, merge);
-
-	std::cout << "###########################################################" << std::endl;
-	size_t e = 0;
-	for (size_t i = 0; i < merge.size(); i++)
-	{
-		while (e < merge[i].size())
-		{
-			std::cout << merge[i][e];
-			std::cout << " ";
-			e++;
+	sort.clear();
+	typename T::iterator it;
+	for (size_t i = 0; i < merge.size(); i++) {
+		for (size_t j = 0; j < merge[i].size(); j++) {
+			if (merge[i].size() == 2 && merge[i].front() > merge[i].back())
+				std::swap(merge[i].front(), merge[i].back());
+			it = std::lower_bound(sort.begin(), sort.end(), merge[i][j]);
+			sort.insert(it, merge[i][j]);
 		}
-	std::cout << std::endl;
-		e = 0;
 	}
-	std::cout << "test-----------------	------" <<std::endl;
-	// std::cout<< std::endl;
-
-
-	// size_t j = 0;
-	// for (size_t i = 0; i < db.size(); i++)
-	// {
-	// 	while (j < db[i].size())
-	// 	{
-	// 		std::cout << " " <<db[i][j];
-	// 		std::cout << " ";
-	// 		j++;
-	// 	}
-	// 	std::cout << std::endl;
-	// 	j = 0;
-	// }
-
-	// std::vector<int>::iterator ite = single.begin();
-	// for (int i = 0; ite != single.end(); ite++, i++) {
-	// 		std::cout << *ite << " ";
-	// }
 }
 
 template <typename T, typename U>
@@ -175,14 +141,17 @@ void	SeparatePair(T &sort, U &pair)
 	T	db;
 	sort.clear();
 	for (size_t i = 0; i < pair.size(); i++) {
+		if (pair[i].size() > 1) {
 			sort.push_back(pair[i].back());
 			pair[i].pop_back();
+		}
 	}
 }
 
 template <typename T, typename U>
 static void	FordJohnson(T &sort, U &pair, std::string &list)
 {
+	size_t		i_1 = 0, i_2 = 0, size= 0, indice = 0;
 	long		nbr1 = 0;
 	char		*end = 0;
 	std::string	value;
@@ -194,8 +163,22 @@ static void	FordJohnson(T &sort, U &pair, std::string &list)
 	}
 	SortByPair(sort, pair);
 	SeparatePair(sort, pair);
-	Merge(sort, pair);
-	//JacobInsert(sort, pair);
+	MergeInsert(sort, pair);
+	typename T::iterator it;
+	size = pair.size();
+	indice = JacobInsert(i_1, i_2);
+	while (indice < size) {
+		it = std::lower_bound(sort.begin(), sort.end(), pair[indice][0]);
+		sort.insert(it, pair[indice][0]);
+		pair[indice][0] = -1;
+		indice = JacobInsert(i_1, i_2);
+	}
+	for (size_t i = 0; i < pair.size(); i++) {
+		if (pair[i][0] != -1) {
+			it = std::lower_bound(sort.begin(), sort.end(), pair[i][0]);
+			sort.insert(it, pair[i][0]);
+		}
+	}
 }
 
 static void	CheckList(std::string &list)
@@ -227,30 +210,27 @@ static void	CheckList(std::string &list)
 
 void	PmergeMe::StartAlgo(std::string &list)
 {
+	long	start, end, check_time;
+
+	start = clock();
 	CheckList(list);
+	end = clock();
+
+	check_time = end - start;
 	std::deque<std::deque<int> >	d_pair;
 	std::vector<std::vector<int> >	v_pair;
+	start = clock();
 	FordJohnson(v_sort, v_pair, list);
-	//FordJohnson(d_sort, d_pair, list);
+	end = clock();
 
-	// size_t	j = 0;
-
-	// std::cout << "Vector" << std::endl;
-	// for (size_t i = 0; i < v_pair.size(); i++)
-	// {
-	// 	while (j < v_pair[i].size())
-	// 	{
-	// 		std::cout << v_pair[i][j];
-	// 		std::cout << " ";
-	// 		j++;
-	// 	}
-	// 	std::cout << "\n" << std::endl;
-	// 	j = 0;
-	// }
-	
-	// std::vector<int>::iterator it = v_sort.begin();
-	// for (int i = 0; it != v_sort.end(); it++, i++) {
-	// 	std::cout << *it << " ";
-	// }
-	// std::cout << std::endl;
+	PrintSort(list, v_sort);
+	std::cout << "Time to process a range of 3000 elements with std::vector "
+		<<static_cast<double>((end - start) + check_time) / CLOCKS_PER_SEC
+		<< " us" <<std::endl;
+	start = clock();
+	FordJohnson(d_sort, d_pair, list);
+	end = clock();
+	std::cout << "Time to process a range of 3000 elements with std::deque "
+		<<static_cast<double>((end - start) + check_time) / CLOCKS_PER_SEC
+		<< " us" <<std::endl;
 }
